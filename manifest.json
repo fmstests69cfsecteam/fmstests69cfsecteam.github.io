@@ -1,0 +1,20 @@
+{
+  "name": "BSoD",
+  "short_name": "BSoD",
+  "start_url": "/index.html",
+  "display": "fullscreen",
+  "background_color": "#001E3C",
+  "theme_color": "#001E3C",
+  "icons": [
+    {
+      "src": "/BSoD maker_files/exe2.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/BSoD maker_files/exe2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

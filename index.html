@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" style="--fhd-multiplier: 0.9;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSoD maker</title>
+
+    <meta name="keywords" content="bsodmaker, bsod, maker, blueascreen, bluescreen of death, editor, free, online, tool, fake, funny">
+    <meta name="description" content="Bsodmaker is a free online editor that allows you to create and edit your own bluescreens!">
+
+    <meta name="author" content="Sajith Giruka | fmstests69@gmail.com">
+    <meta name="theme-color" content="#001E3C">
+
+    <link rel="icon" type="image/png" href="BSoD maker_files/bsod.png">
+
+    <script>const COOKIE_NAME = "dont_show_welcome_screen"; const RETURN_VISIT = true;</script>
+    <script src="./BSoD maker_files/jquery.min.js"></script>
+    <script src="./BSoD maker_files/qrcode.min.js"></script>
+    <script src="./BSoD maker_files/html2canvas.min.js"></script>
+    <script src="./BSoD maker_files/mobilecheck.js"></script>
+
+    <link rel="stylesheet" href="./BSoD maker_files/fonts.css">
+    <link rel="stylesheet" href="./BSoD maker_files/windowsui.css">
+    <link rel="stylesheet" href="./BSoD maker_files/bsod.css">
+    <link rel="stylesheet" href="./BSoD maker_files/bsod-fhd.css">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+    <!--<bsod>-->
+    <div id="bsod-render" class="bsod-render">
+        <div class="bsod-container">
+            <div class="bsod-top">
+                <div id="bsod-edit-field-1" contenteditable="true" spellcheck="false" class="bsod-face">:(</div>
+                <div id="bsod-edit-field-2" contenteditable="true" spellcheck="false" class="bsod-p margin-t-15">Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.</div>
+                <div id="bsod-edit-field-3" contenteditable="true" spellcheck="false" class="bsod-p margin-t-35">0% complete</div>
+            </div>
+            <div class="bsod-bottom">
+                <button id="bsod-qrcode" class="window-noselect bsod-qrcode" title="Open Menu"><canvas width="90" height="90" style="display: none;"></canvas><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAEeklEQVR4AeycAXIUMQwEj3sNT4QX8ET4TYiKKDWeeOWV1vaF3KQwlqzR2NfZdQWK4n778ftl9XiBL94LSh/OgTWLsdfyswP7LMY+y3eM+01fWwgI9BbMt1sD+uXX99uMEZ2d/b/9/HPzwX2+7jPXMXeNzbiejfl81Zz3bUBzUfk8AgI9j2XoJNAhnnnFELTdd2dG5jjsF/VG9+MVn2hPrPEeUY59vTgE3WvQWo2AQNe4pbv+K9D46qY/6YMbHgr6wZ996/YCvQm3QD8L6Fk/wiEvvMt7MWp3xXqiN5EW6M8AOnqtsZY5K/ZZjL38mmPNYtNXhvVWRmavkb+e6BGhSXWBngRyZCPQI0KT6g1oviOreXQ29oy0fEdiL/dFNdZGOfpciXmPBjQXv3S++cMJ9CbgAr0LNN+DK3L8LOyPtSsx+mZ8sG9lrCc68125oBXoC/AyrffqjzDRJuyJ2qiGOourWuuNBvqe1WFPL2Yf1uiJZkKLcoFeBJZtBZqJLMob0Jkfb/gOwpx9qmfP+KC2up/1RZ8D9+AY+yzmegPaNtJYQ6AFvWYPub4SCEHbK+DjVXv4i18T7+nNbIKaqGY6rldzPG/Vg/vQ02Kuh6BZrLxOQKDr7FKdAp3CVReHoO2u8RFtYfcnDu/pzZEP13r9vob7jWLv8TnSu8ZmPk/Ux1rOQ9AsVl4nINB1dqlOgU7hqovvdhf5yNxB3mMzb88+WDc9DqyNYvSNtOhvcaTlGu7BsXnhwF7Wcq4nGmktjD8R6IWf8hNYN6DxteCYz4qvBms5596jnPtwD4uxj7WYmzYaqEXPbIw+HLNXA5qLyucREOh5LEMngQ7xzCs2oKN7jWt4J/FxWBvl6MM69kUt1zBHXS/GfXp1X0PPXow+HLuHzw3onpnW5hAQ6Dkchy7NP6Dxx7w3sxO/Kpj3+n0t8nGNz6zdkePnGO3n5+zN6GOxnugRzUl1gZ4EcmQj0P8ILf+9+du7zG54L3Gf3Uk4uH6UY4/FuIfF2Gf1o4E6i1lnaz6immt8Zm2Ue4/PeqKdxOJZoBcDdnuBdhKL59Og7Y7EgefC9V6MWo57el9jLeau6c18d2Kfxb2e3pppcbDmbM10p0GbWKNOQKDr7FKdzR/B+ZWbleOJ+PXDPVDXi1EbxbxHz8vX2MfXs/PIR090lmhRL9BFcNk2gc4SK+ob0HS3lf/T7uJZPrRF9x6fFZujPtRZHPlYPRrcG+UN6MhUtWsEBPoav9PdIWh+BY/y07sNhOzPr+Kg/b086uN9jvJ3w7eAdW/L3Ym1IeiugxZLBAS6hC3fJNB5ZqWO7aD57sJT893KWqxnariHxehjOY6ohjqL+QyYWx3HdtC4+TPFAr3puy3Qzw669/mjOxD1eM/24rM+6Gkxe9na0WCtnugjUpPXBXoy0CO7EDQ//kf5kXl2HV9pi3m/rN9O/eisIeidB/3qewn0pu+wQD8CtN2LM0bm7Hy3YZ7xwXOP+nAPjiMfrFmM+1geDT3RSGthLNAL4aK1QCONhfFfAAAA//+whPwSAAAABklEQVQDAPWW6TEgJgEmAAAAAElFTkSuQmCC" style="display: block;"></button>
+                <div class="bsod-qr-aside">
+                    <div id="bsod-edit-field-4" contenteditable="true" spellcheck="false">For more information about this issue and possible fixes, visit https://www.windows.com/stopcode</div>
+                    <div id="bsod-edit-field-5" contenteditable="true" spellcheck="false">If you call a support person, give them this info:</div>
+                    <div id="bsod-edit-field-6" contenteditable="true" spellcheck="false">Stop code: DRIVER_POWER_STATE_FAILURE</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bsod-render2-container">
+        <div id="bsod-render2" class="bsod-render2">
+            <div class="bsod-container2">
+                <div class="bsod-top2">
+                    <div id="bsod-print-field-1" class="bsod-face2">:(</div>
+                    <div id="bsod-print-field-2" class="bsod-p2 margin-t-152">Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.</div>
+                    <div id="bsod-print-field-3" class="bsod-p2 margin-t-352">0% complete</div>
+                </div>
+                <div class="bsod-bottom2">
+                    <button id="bsod-qrcode2" class="bsod-qrcode2" title="Open Menu"><canvas width="100" height="100" style="display: none;"></canvas><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAEY0lEQVR4Aeyaa27cMBCDt3uaHrE9QY/Y3ibF/FhA+uIVPZH1cMACQpaeB0ckPEmbPh+//n7MOh/4Q16EP82VjTOfOMvP/BH4+fCfrRSwIVvZ8XhUhnz8+fm48qi7kuvH73+P8rC+jMVnxokjpzyMZzHn7cVH/JUhRwl+NlcBGzJXb8lmQ6REcxOahpT798zn7OjsqerVzu7tp/gZJ5/CrD/CTUOOCvxsrAI2ZKy+6e5jDEmP4YKXArc2hDv7dak7f721IXcW/t3sNuSdMoue25BFwr+j3cqQq/+ewUvzew4x81fgrQxZIcBunDZkM0dsyJ0MUTud8ezdVL3a8azP4uy8zB/Bd6c3hHp8S2xDNrPVhuxsCHd2L1Z3ZX+Vz52t6lVc8THOfr2Y/QP7DQkVNjo2ZCMzYhQbEipsdJ7cyyMx700uxntxb3/Wz8B+Q3pdv7jehlwsaG87G9Kr4MX1z56fpdUs7M18Fb9bPu9DrO4T+X5DqNJibEMWG0B6G0JFFuPKkOzP2bHzWof9eu+a7ZfNV/Pxruyv8Jn6yhA1kOPjFbAh4zVOMdiQlFzjk5uGcOepcbhDWU/Mfr1x9stizp+tV/ln+jcNUQSOv1XgywEb8mXpxhTakDG6frlr05AzO69k5vcA1hOXtWc+s56Y/Apn65nPmRUf849w05CjAj8bq4ANGatvursNSUs2tqD6nXp2B2Z3Kq+i6plPzHkZJ76aj/yqP/OPsN8QurYY25DFBpDehlCRxbgyhDuQmLNyBzKfmPUKs558rGc+MeuJmc/+Wcx+xEf9KkOOEvxsrgI2ZK7eks2GSInmJlSGcKcqrHaiqmec/RinNMxnnJj5xORjnJj9idmPmP0CV4awofF8BWzIfM2bjDakKc/8YPV/e2OHtQ7H404kbvWKmOoXOeVh/mzM+yn+cvajz+wX2G+IUnVyfIEhk294Mzobsplh1e9DsrNxL7I+dmJ5GFe4rI3PWb6oKQ/5ylh8zsZVfvRsHdYH9hsSKmx0bMhGZsQoNiRU2OikDFE7nHFidW/mE/fWc5+zH/kUVvXZeOSnDIkCn7EK2JCx+qa725C0ZGMLqn/L4o69GvMq3NHkYz5xmX/mM/nYj5g9Gc/iM/38hmRVHZxvQwYLnG1vQ7KKDc6vDOGO7cVXz652MOclv6pnvurHfGLWn8GVIWxoPF8BGzJf8yajDWnKMz/YNIQ7V+Grxycfd3CWT9WTT2HyM59xYuYHbhrCBsbjFbAhTY3nB23IfM2bjEsNiZ1ZHk7KnV/mxufeuOLLxpkfM7YO8wMvNSQG8KkVsCG1HsuRDVluQT3ArQ3hfq6v9hnxew5xth8Z2I9xYuYHvrUhvOB3wDZkMxdtyJ0MiZ2WOVffjTuds1zNN7rfa/7X1yM+vyFHqix8ZkMWin9EbUOOVFn4rDKEO7sXZ+/12q3vvmb7cX5V/4739Vz1y8aZH7gyRA3s+HgFbMh4jVMMNiQl1/hkGzJe4xTDfwAAAP//8PI1kQAAAAZJREFUAwD2A7NqdabpcQAAAABJRU5ErkJggg==" style="display: block;"></button>
+                    <div class="bsod-qr-aside2">
+                        <div id="bsod-print-field-4">For more information about this issue and possible fixes, visit https://www.windows.com/stopcode</div>
+                        <div id="bsod-print-field-5">If you call a support person, give them this info:</div>
+                        <div id="bsod-print-field-6">Stop code: DRIVER_POWER_STATE_FAILURE</div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <!--</bsod>-->
+    
+    <script src="./BSoD maker_files/bsod.js"></script>
+
+    <!-- Dynamic percentage counter: 0% to 200% over 30 minutes -->
+    <script>
+      (function progressCounter() {
+        const durationMs = 30 * 60 * 1000; // 30 minutes in milliseconds
+        const startTime = Date.now();
+        
+        function updateProgress() {
+          const elapsed = Date.now() - startTime;
+          const percentage = Math.min(Math.round((elapsed / durationMs) * 200), 200);
+          
+          // Update both editable and print fields
+          document.getElementById('bsod-edit-field-3').textContent = percentage + '% complete';
+          document.getElementById('bsod-print-field-3').textContent = percentage + '% complete';
+          
+          // Continue updating every 100ms until 200%
+          if (percentage < 200) {
+            requestAnimationFrame(updateProgress);
+          }
+        }
+        
+        updateProgress();
+      })();
+    </script>
+
+    <!-- Service worker and fullscreen handling -->
+    <script>
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').catch(()=>{});
+      }
+
+      // Install prompt handling (optional install button)
+      let deferredPrompt;
+      const installBtnId = 'bsod-install-btn';
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (!document.getElementById(installBtnId)) {
+          const btn = document.createElement('button');
+          btn.id = installBtnId;
+          btn.textContent = 'Install App (fullscreen)';
+          btn.style.position = 'fixed';
+          btn.style.right = '12px';
+          btn.style.bottom = '12px';
+          btn.style.zIndex = '99999';
+          btn.className = 'ms-btn';
+          document.body.appendChild(btn);
+          btn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const choice = await deferredPrompt.userChoice;
+            deferredPrompt = null;
+            btn.remove();
+          });
+        }
+      });
+
+      // Auto-enter fullscreen on first user interaction (mouse move, key press, touch)
+      (function autoFullscreen() {
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+        if (isStandalone) return; // Already in fullscreen mode as PWA
+
+        let triggered = false;
+
+        function enterFullscreen() {
+          if (triggered) return;
+          triggered = true;
+          
+          const el = document.documentElement;
+          const requestFsMethod = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+          if (requestFsMethod) {
+            requestFsMethod.call(el).catch(()=>{});
+          }
+          
+          // Remove listeners after fullscreen is triggered
+          document.removeEventListener('mousemove', enterFullscreen);
+          document.removeEventListener('keydown', enterFullscreen);
+          document.removeEventListener('touchstart', enterFullscreen);
+          document.removeEventListener('click', enterFullscreen);
+        }
+
+        // Trigger on any user interaction
+        document.addEventListener('mousemove', enterFullscreen, { once: true });
+        document.addEventListener('keydown', enterFullscreen, { once: true });
+        document.addEventListener('touchstart', enterFullscreen, { once: true });
+        document.addEventListener('click', enterFullscreen, { once: true });
+      })();
+    </script>
+   
+</body>
+</html>
