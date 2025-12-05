@@ -1,0 +1,148 @@
+:root{
+    /*--fhd-multiplier: 1;*/
+
+    --bg-color: #0078d7;
+    --font-color: #ffffff;
+}
+
+body{
+    background-color: var(--bg-color);
+}
+
+
+/* <wyroznienie qr code> */
+@keyframes flash {
+    from {box-shadow: 0 0 20px white}
+    to {box-shadow: none}
+}
+.attention-animation{
+    animation-name: flash;
+    animation-duration: 0.7s;
+    animation-iteration-count: Infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in;
+}
+/* </wyroznienie qr code> */
+
+/* <bsod> */
+
+.bsod-hidden-content *{ /*hidden content until page loads*/
+    visibility: hidden;
+}
+
+.bsod-render * [contenteditable="true"] {
+    min-width: 40px;
+}
+.bsod-render * [contenteditable="true"]:hover {
+    box-shadow: 0 0 2px black inset;
+}
+.bsod-nocursor * [contenteditable="true"]:hover {
+    box-shadow: none !important;
+}
+.bsod-render * [contenteditable="true"]::before { /*z dupy margines pod pustym content editablem*/
+    content: "";
+}
+
+.bsod-render{
+    box-sizing: border-box;
+    padding-top: calc(100px * var(--fhd-multiplier));
+    background-color: var(--bg-color); /*in order to html2cavas work*/
+    height: 100vh;
+    overflow: hidden;
+
+}
+.bsod-render *{
+    color: var(--font-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', "open-sans", sans-serif;
+    font-size: 1em;
+    font-weight: 100;
+    border: none;
+    box-sizing: border-box;
+}
+
+.bsod-nocursor, .bsod-nocursor *{
+    cursor: none !important;
+}
+
+
+.bsod-container{
+    margin-left: calc(205px * var(--fhd-multiplier));
+    width: calc(970px * var(--fhd-multiplier));
+}
+.bsod-container div{
+    display: inline-block;
+}
+.bsod-top{
+    display: inline-flex !important; 
+    flex-direction: column;
+}
+.bsod-render *[contenteditable="true"] {
+    padding-left: calc(6px * var(--fhd-multiplier));
+    position: relative;
+    left: calc(-6px * var(--fhd-multiplier));
+}
+.bsod-face{
+    font-size: calc(210px * var(--fhd-multiplier));
+    position: relative;
+    left: calc(-30px * var(--fhd-multiplier)) !important;
+}
+.bsod-p{
+    font-size: calc(42px * var(--fhd-multiplier));
+    letter-spacing: calc(-0.2px * var(--fhd-multiplier));
+    line-height: calc(58px * var(--fhd-multiplier));
+}
+.bsod-bottom{
+    margin-top: calc(45px * var(--fhd-multiplier));
+    display: flex !important;
+    align-items: flex-start;
+}
+.bsod-qrcode{
+    cursor: pointer;
+    padding: calc(10px * var(--fhd-multiplier) - 1px);
+    border: 1px solid white;
+    margin-right: calc(20px * var(--fhd-multiplier));
+    background-color: var(--font-color);
+}
+.bsod-qrcode:hover{
+    border: 1px solid rgba(0, 0, 0, 0.7);
+}
+.bsod-qrcode canvas{ /*canvas wygląda lepiej na telefonach*/
+    display: block !important;
+    height: calc(100px * var(--fhd-multiplier));
+    width: calc(100px * var(--fhd-multiplier));
+    image-rendering: pixelated;
+}
+.bsod-qrcode img{
+    display: none !important;
+}
+.bsod-qr-aside{
+    position: relative;
+    top: -5px;
+}
+.bsod-qr-aside > div{
+    display: block;
+    font-size: calc(16px * var(--fhd-multiplier));
+    letter-spacing: 0px;
+    margin-bottom: calc(12px * var(--fhd-multiplier));
+}
+.bsod-qr-aside > div:first-child{
+    font-size: calc(19px * var(--fhd-multiplier)); /*19 zamiast 20 zamiast ze względu na open sans*/
+    margin-bottom: calc(36px * var(--fhd-multiplier));
+    margin-top: calc(6px * var(--fhd-multiplier));
+
+    letter-spacing: -0.2px; /*ze względu na open sans*/
+}
+.bsod-qr-aside > div:last-child{
+    margin-bottom: 0;
+}
+
+.margin-t-35{
+    margin-top: calc(35px * var(--fhd-multiplier));
+}
+.margin-t-15{
+    margin-top: calc(10px * var(--fhd-multiplier));
+}
+
+/* </bsod> */

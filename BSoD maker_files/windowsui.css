@@ -1,0 +1,318 @@
+:root{
+    --ui-scale: 0.8;
+
+    --color-active-border: rgb(107, 110, 112);
+    --color-inactive-border: rgb(170, 170, 170);
+    --color-inactive-header-text: rgb(153, 153, 153);
+    --color-close-red: rgb(232, 17, 35);
+    --color-btn-active-hover: rgb(229, 229, 229);
+    --color-ms-btn: rgb(85, 85, 85);
+}
+
+
+body{
+    margin: 0;
+}
+
+.window-desktop{
+    pointer-events: none;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.window-desktop > *{
+    pointer-events: all;
+}
+#window-fullscreen-animation{
+    position: fixed;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    height: calc(100vh - calc(20px * var(--ui-scale)));
+    width: calc(100vw - 20px);
+    background-color: rgba(192, 192, 192, 0.2);
+    border: 1px solid rgba(192, 192, 192, 0.8);
+    margin: calc(10px * var(--ui-scale));
+    display: none;
+}
+
+/* <window> */
+.window-noselect{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    -webkit-tap-highlight-color: transparent;
+}
+.window, .window *{
+    background-color: white;
+    font-family: 'Segoe UI', "open-sans", sans-serif;
+    font-weight: 400;
+    font-size: calc(16px * var(--ui-scale));
+    margin: 0;
+}
+.window{
+    max-width: 100vw;
+    position: absolute; /*draggable*/
+    color: black;
+    background-color: white;
+    z-index: 1;
+    min-width: calc(232px * var(--ui-scale));
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.25);
+    width: calc(500px * var(--ui-scale));
+}
+.window-border{
+    border-left: 1px solid var(--color-active-border);
+    border-right: 1px solid var(--color-active-border);
+    cursor: e-resize;
+}
+.window-border > div{
+    cursor: default;
+}
+.window-border::before, .window-border::after{
+    content: "";
+    display: block;
+    height: 1px;
+    cursor: n-resize;
+    background-color: var(--color-active-border);
+}
+.window-top{
+    display: flex;
+}
+.window-header{
+    touch-action: none;
+    
+    background-color: white;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    font-size: calc(12px * var(--ui-scale));
+    font-weight: 400;
+    overflow: hidden;
+}
+.window-icon{
+    height: calc(16px * var(--ui-scale));
+    margin-top: calc(6px * var(--ui-scale));
+    margin-left: calc(8px * var(--ui-scale));
+    margin-bottom: calc(7px * var(--ui-scale));
+    margin-right: calc(5px * var(--ui-scale));
+}
+.window-margin-div-16{
+    height: calc(16px * var(--ui-scale));
+}
+.window-btn{
+    width: calc(45px * var(--ui-scale));
+    height: calc(29px * var(--ui-scale));
+    background-color: white;
+    font-size: calc(14px * var(--ui-scale));
+    border: none;
+}
+.window-btn-active:hover, .window-maximized .window-btn-active:hover .window-icon-square::after, .window-btn-active:hover > div{
+    background-color: var(--color-btn-active-hover);
+    color: black;
+}
+.window-btn-inactive{
+    color: var(--color-inactive-header-text);
+}
+.window-btn-close:hover{
+    color: white;
+    background-color: var(--color-close-red);
+}
+.window-icon-hyphen{
+    background-color: black !important;
+    height: 1px;
+    width: calc(10px * var(--ui-scale));
+    margin: auto;
+}
+.window-icon-square{
+    border: 1px solid black;
+    height: calc(8px * var(--ui-scale));
+    width: calc(8px * var(--ui-scale));
+    margin: auto;
+}
+.window-text:last-of-type{
+    margin-bottom: calc(16px * var(--ui-scale));
+}
+.window-text-dim{
+    color: rgb(139, 139, 139);
+}
+.window-button-row{
+    white-space: nowrap
+}
+.window-button-row > *{
+    margin-right: calc(8px * var(--ui-scale));
+}
+.window-button-row > *:last-child{
+    margin-right: 0;
+}
+
+/*maximized window*/
+.window-maximized{
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh;
+    width: 100vw !important;
+}
+.window-maximized .window-content{
+    height: auto !important;
+    max-height: calc(100vh - calc(49px * var(--ui-scale)));
+}
+.window-maximized .window-border{
+    height: calc(100vh - 2px);
+    cursor: default;
+}
+.window-maximized .window-border::before, .window-maximized .window-border::after{
+    display: none;
+}
+.window-maximized .window-icon-square{
+    position: relative;
+    top: calc(-2px * var(--ui-scale));
+    height: calc(6px * var(--ui-scale));
+    width: calc(6px * var(--ui-scale));
+}
+.window-maximized .window-icon-square::after{
+    content: "";
+    display: block;
+    background-color: white;
+    border: 1px solid black;
+    position: relative;
+    top: 1px;
+    right: calc(3px * var(--ui-scale));
+    height: calc(6px * var(--ui-scale));
+    width: calc(6px * var(--ui-scale));
+}
+
+/*inactivity of window*/
+.window-inactive .window-border{
+    border-color: var(--color-inactive-border);
+}
+.window-inactive .window-border::before, .window-inactive .window-border::after{
+    background-color: var(--color-inactive-border);
+}
+.window-inactive .window-icon-square::after{
+    border-color: var(--color-inactive-header-text);
+}
+.window-inactive .window-header, .window-inactive .window-btn{
+    color: var(--color-inactive-header-text);
+}
+.window-inactive .window-icon-hyphen{
+    background-color: var(--color-inactive-header-text) !important;
+}
+.window-inactive .window-icon-square{
+    border: 1px solid var(--color-inactive-header-text);
+}
+
+/*content od window and ui components*/
+.window-content{
+    padding: calc(10px * var(--ui-scale));
+    overflow: auto;
+}
+.window-h1, .window-h2{
+    margin: 0;
+    margin-bottom: calc(4px * var(--ui-scale));
+}
+.window-h1{
+    font-size: calc(20px * var(--ui-scale));
+}
+.window-section{
+    margin-top: calc(26px * var(--ui-scale));
+    width: fit-content;
+}
+/* </window> */
+
+/*<button>*/
+a.ms-btn{
+    color: black;
+    text-decoration: none;
+    cursor: default;
+}
+.ms-btn{
+    padding: 4px 13px 5px;
+    font-weight: 400;
+    background-color: rgb(204, 204, 204);
+    border: 2px solid rgb(204, 204, 204);
+}
+.ms-btn:hover{
+    border: 2px solid rgb(122, 122, 122);
+}
+.ms-btn:active{
+    background-color: rgb(122, 122, 122);
+}
+/*</button>*/
+
+/*<input>*/
+.ms-input{
+    font-weight: 100;
+    outline: none;
+    box-sizing: border-box;
+    width: calc(478px * var(--ui-scale));
+    max-width: calc(100vw - 22px);
+    padding: calc(8px * var(--ui-scale)) calc(11px * var(--ui-scale)) calc(6px * var(--ui-scale));;
+    border: calc(3px * var(--ui-scale)) solid rgb(125, 125, 125);
+}
+.ms-input:hover, .ms-input:active, .ms-input:focus{
+    border: calc(3px * var(--ui-scale)) solid rgb(42, 109, 185);
+}
+/*</input>*/
+
+/*<switch>*/
+.w10-switch label{
+    font-size: calc(13px * var(--ui-scale));
+}
+.w10-switch-sw{
+    display: flex;
+    width: calc(34px * var(--ui-scale));
+    height: calc(10px * var(--ui-scale));
+    padding: calc(3px * var(--ui-scale));
+    border-radius: calc(16px * var(--ui-scale));
+    border: 2px solid black;
+}
+.w10-switch-sw > div{
+    background-color: black;
+    height: calc(10px * var(--ui-scale));
+    width: calc(10px * var(--ui-scale));
+    border-radius: 50%;
+}
+.w10-sw-container{
+    margin-top: calc(13px * var(--ui-scale));
+    display: flex;
+}
+.w10-sw-container > span{
+    margin-left: calc(12px * var(--ui-scale));
+    font-size: calc(13px * var(--ui-scale));
+}
+.w10-sw-on .w10-switch-sw{
+    background-color: rgb(0, 120, 215);
+    border-color: rgb(0, 120, 215);
+    justify-content: flex-end;
+}
+.w10-sw-on .w10-switch-sw:hover{
+    background-color: rgb(77, 161, 227);
+    border-color: rgb(77, 161, 227);
+}
+.w10-sw-on .w10-switch-sw > div{
+    background-color: white;
+}
+.w10-switch-sw:active{
+    background-color: rgb(102, 102, 102) !important;
+    border-color: rgb(102, 102, 102) !important;
+}
+.w10-switch-sw:active > div{
+    background-color: white;
+}
+/*</switch>*/
+
+@media (min-width: 550px) and (min-height: 600px) {
+    :root{
+        --ui-scale: 0.9;
+    }
+}
+@media (min-width: 700px) and (min-height: 700px) {
+    :root{
+        --ui-scale: 1;
+    }
+}

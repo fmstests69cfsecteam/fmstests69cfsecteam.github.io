@@ -1,0 +1,106 @@
+#bsod-render2-container{
+    position: fixed;
+    z-index: -1;
+}
+
+#bsod-render2{
+    width: 1920px;
+    height: 1080px;
+}
+
+:root{
+    --bg-color: #0078d7;
+    --font-color: #ffffff;
+}
+
+
+/* <bsod> */
+
+.bsod-render2{
+    box-sizing: border-box;
+    padding-top: 100px;
+    background-color: var(--bg-color); /*in order to html2cavas work*/
+    height: 100vh;
+    overflow: hidden;
+}
+.bsod-render2 *{
+    color: var(--font-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', "open-sans", sans-serif;
+    font-size: 1em;
+    font-weight: 100;
+    border: none;
+    box-sizing: border-box;
+}
+
+.bsod-container2{
+    margin-left:205px;
+    width: 970px;
+}
+.bsod-container2 div{
+    display: inline-block;
+}
+.bsod-top2{
+    display: inline-flex !important; 
+    flex-direction: column;
+}
+.bsod-face2{
+    font-size: 210px;
+    position: relative;
+    left: -30px;
+}
+.bsod-p2{
+    font-size: 42px;
+    letter-spacing: -0.2px;
+    line-height: 58px;
+}
+.bsod-bottom2{
+    margin-top: 45px;
+    display: flex !important;
+    align-items: flex-start;
+}
+.bsod-qrcode2{
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 20px;
+    background-color: var(--font-color);
+}
+.bsod-qrcode2 canvas{ /*canvas wygląda lepiej na telefonach*/
+    display: block !important;
+    height: 100px;
+    width: 100px;
+    image-rendering: pixelated;
+}
+.bsod-qrcode2 img{
+    display: none !important;
+}
+.bsod-qr-aside2{
+    position: relative;
+    top: -5px;
+}
+.bsod-qr-aside2 > div{
+    display: block;
+    font-size: 16px;
+    letter-spacing: 0px;
+    margin-bottom: 12px;
+}
+.bsod-qr-aside2 > div:first-child{
+    font-size: 19px; /*19 zamiast 20 zamiast ze względu na open sans*/
+    margin-bottom: 36px;
+    margin-top: 6px;
+
+    letter-spacing: -0.2px; /*ze względu na open sans*/
+}
+.bsod-qr-aside2 > div:last-child{
+    margin-bottom: 0;
+}
+
+.margin-t-352{
+    margin-top: 35px;
+}
+.margin-t-152{
+    margin-top: 10px;
+}
+
+/* </bsod> */
