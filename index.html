@@ -125,7 +125,7 @@
         }
       });
 
-      // Auto-enter fullscreen on first user interaction (mouse move, key press, touch)
+      // Auto-enter fullscreen on first user interaction (mouse move, key press, touch, click)
       (function autoFullscreen() {
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
         if (isStandalone) return; // Already in fullscreen mode as PWA
@@ -149,11 +149,32 @@
           document.removeEventListener('click', enterFullscreen);
         }
 
-        // Trigger on any user interaction
+        // Trigger on any user interaction (once)
         document.addEventListener('mousemove', enterFullscreen, { once: true });
         document.addEventListener('keydown', enterFullscreen, { once: true });
         document.addEventListener('touchstart', enterFullscreen, { once: true });
         document.addEventListener('click', enterFullscreen, { once: true });
+      })();
+
+      // Auto-open developer tools (F12) when hosted on GitHub Pages
+      (function autoOpenDevTools() {
+        const hostname = window.location.hostname;
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Check if page is hosted on GitHub Pages (*.github.io) or if ?devtools parameter is present
+        if (hostname.includes('github.io') || hostname.includes('github.com') || urlParams.has('devtools')) {
+          // Simulate F12 keypress to open developer tools
+          const event = new KeyboardEvent('keydown', {
+            key: 'F12',
+            code: 'F12',
+            keyCode: 123,
+            which: 123,
+            bubbles: true,
+            cancelable: true
+          });
+          document.dispatchEvent(event);
+          window.dispatchEvent(event);
+        }
       })();
     </script>
    
